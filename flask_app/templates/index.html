@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select NFL Team</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Concussions and the NFL</h1>
+	<h4>How many players on a team had concussions (from 2012-2014), and how did the team perform during years players were concussed?</h4>
+    <form action="/team" method="post">
+        <label for="team">Select a team:</label>
+        <select name="team" id="team">
+            <option value="New England Patriots">New England Patriots</option>
+            <option value="Miami Dolphins">Miami Dolphins</option>
+            <option value="Buffalo Bills">Buffalo Bills</option>
+            <option value="New York Jets">New York Jets</option>
+            <option value="Baltimore Ravens">Baltimore Ravens</option>
+            <option value="Cincinnati Bengals">Cincinnati Bengals</option>
+            <option value="Pittsburgh Steelers">Pittsburgh Steelers</option>
+            <option value="Cleveland Browns">Cleveland Browns</option>
+            <option value="Indianapolis Colts">Indianapolis Colts</option>
+            <option value="Tennessee Titans">Tennessee Titans</option>
+            <option value="Jacksonville Jaguars">Jacksonville Jaguars</option>
+            <option value="Houston Texans">Houston Texans</option>
+            <option value="Kansas City Chiefs">Kansas City Chiefs</option>
+            <option value="Denver Broncos">Denver Broncos</option>
+            <option value="Oakland Raiders">Oakland Raiders</option>
+            <option value="San Diego Chargers">San Diego Chargers</option>
+            <option value="Philadelphia Eagles">Philadelphia Eagles</option>
+            <option value="Dallas Cowboys">Dallas Cowboys</option>
+            <option value="Washington Redskins">Washington Redskins</option>
+            <option value="New York Giants">New York Giants</option>
+            <option value="Green Bay Packers">Green Bay Packers</option>
+            <option value="Minnesota Vikings">Minnesota Vikings</option>
+            <option value="Chicago Bears">Chicago Bears</option>
+            <option value="Detroit Lions">Detroit Lions</option>
+            <option value="Carolina Panthers">Carolina Panthers</option>
+            <option value="New Orleans Saints">New Orleans Saints</option>
+            <option value="Tampa Bay Buccaneers">Tampa Bay Buccaneers</option>
+            <option value="Atlanta Falcons">Atlanta Falcons</option>
+            <option value="St. Louis Rams">St. Louis Rams</option>
+            <option value="Seattle Seahawks">Seattle Seahawks</option>
+            <option value="San Francisco 49ers">San Francisco 49ers</option>
+            <option value="Arizona Cardinals">Arizona Cardinals</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+
+</body>
+</html>

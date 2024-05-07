@@ -1,0 +1,87 @@
+This is the css file, it wouldn't let me submit it on canvas because it was an incorrect file type, so just put the exact text below into a styles.css file
+/* styles.css */
+I used chatgpt to help me to generate the style for the page by feeding it what I wanted it to look like and how I wanted to change the divisions of the html page. 
+
+/* Body */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: lightpink; /* Background color of the page */
+    color: black; /* Text color */
+    text-align: center; /* Center align text */
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    color: black; /* Heading text color */
+}
+
+/* Form */
+form {
+    margin-top: 20px;
+}
+
+/* Select Dropdown */
+select {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Search Button */
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid darkmagenta;
+    background-color: mediumvioletred; /* Search button color */
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+/* Tables */
+table {
+    width: 80%;
+    margin: 20px auto; /* Center align table */
+    border-collapse: collapse;
+    background-color: whitesmoke; /* Table background color */
+    box-shadow: 0 4px 8px mediumvioletred; /* Add shadow */
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid mediumvioletred; /* Table border color */
+    text-align: center;
+}
+
+/* Links */
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* New Search Button */
+.new-search-btn, .team {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: whitesmoke; /* Button background color */
+    color: black; /* Button text color */
+    border: 1px solid mediumvioletred;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.new-search-btn:hover, .team:hover {
+    background-color: mediumvioletred; /* Darker background color on hover */
+	color: whitesmoke;
+	box-shadow: 0 4px 8px mediumvioletred;
+}
+/* Highlighting */
+.player-highlight, .year-highlight {
+    display: inline;
+    background-color: mediumvioletred; /* Highlight background color */
+    border: 1px solid darkmagenta;
+    color: whitesmoke; /* Highlight text color */
+    cursor: pointer;
+}

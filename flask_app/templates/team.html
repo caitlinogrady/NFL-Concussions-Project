@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team }} Team Information</title>
+    <!--linking to css stylesheet, to format the page-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!--Shows the team selected by the user-->
+    <h1>{{ team }} Team Information</h1>
+    <h2>Team Stats</h2>
+    <h3>The team's performance in years that one of their players had concussions:</h3>
+    <ul>
+        <!--Shows each year that players on the team received a concussion, clickable to display the relevant stats -->
+        {% for year in team_stats.keys() %}
+        <li class="year">{{ year }}</li>
+        {% endfor %}
+    </ul>
+    <!--hidden stats for each relevant year, table displays on click-->
+    <div id="year-stats" style="display: none;">
+        <table>
+            <tr>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Win-Loss Percentage</th>
+            </tr>
+            {% for year, stats in team_stats.items() %}
+            <tr class="year-data" id="{{ year }}">
+                <td>{{ stats.wins }}</td>
+                <td>{{ stats.losses }}</td>
+                <td>{{ stats.win_loss_perc }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!--Shows the name of each player who received a concussion playing for the team-->
+    <h2>Concussed Player Information</h2>
+    <ul>
+        {% for player in players.keys() %}
+        <li class="player">{{ player }}</li>
+        {% endfor %}
+    </ul>
+
+    <!--Hidden table of stats for each player, shown when click the players name-->
+    <div id="player-info" style="display: none;">
+        <table>
+            <tr>
+                <th>Position</th>
+                <th>Concussions</th>
+                <th>Years</th>
+                <th>Weeks Injured</th>
+                <th>Games Missed</th>
+                <th>Avg. Play Time Before Injury</th>
+                <th>Avg. Play Time After Injury</th>
+            </tr>
+            {% for player, data in players.items() %}
+            <tr class="player-data" id="{{ player }}">
+                <td>{{ data.Position }}</td>
+                <td>{{ data.Concussions }}</td>
+                <td>{{ data.Year }}</td>
+                <td>{{ data.Weeks_Injured }}</td>
+                <td>{{ data.Games_Missed }}</td>
+                <td>{{ data.Play_Time_Before_Injury }}</td>
+                <td>{{ data.Play_Time_After_Injury }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <!--Shows teams with the same number of concussions-->
+    <h2>Teams with the Most Similar Concussion History:</h2>
+    <ul>
+        {% for team in closest %}
+        <!--creates a button for each team name that, when clicked, returns the same search results as searching for the team in index.html would-->
+        <!--asked chatgpt how to do this/ how to create a button that essentially returns the search results like it would from index.html-->
+        <form action="/team" method="post">
+            <input type="hidden" name="team" value="{{ team }}">
+            <button type="submit" class="team">The {{ team }} had the same number of concussions.</button>
+        </form>
+        {% endfor %}
+    </ul>
+    
+    <!--new search button to return to index.html-->
+    <button class="new-search-btn" onclick="location.href='/'">New Search</button>
+
+    <!--javascript that makes it so that, when a year or player name is clicked, the player or year for which information is being shown is highlighted-->
+    <!--asked chatgpt how to make javascript so that the player who has been clicked will be highlighted-->
+    <script>
+        document.querySelectorAll('.player').forEach(item => {
+            item.addEventListener('click', event => {
+                // Remove highlighting from other elements
+                document.querySelectorAll('.player').forEach(player => {
+                    player.classList.remove('player-highlight');
+                });
+                // Highlight the clicked player
+                item.classList.add('player-highlight');
+    
+                document.getElementById('player-info').style.display = 'block';
+                document.querySelectorAll('.player-data').forEach(row => {
+                    row.style.display = 'none';
+                });
+                document.getElementById(item.textContent).style.display = 'table-row';
+            });
+        });
+    
+        document.querySelectorAll('.year').forEach(item => {
+            item.addEventListener('click', event => {
+                // Remove highlighting from other elements
+                document.querySelectorAll('.year').forEach(year => {
+                    year.classList.remove('year-highlight');
+                });
+                // Highlight the clicked year
+                item.classList.add('year-highlight');
+    
+                document.getElementById('year-stats').style.display = 'block';
+                document.querySelectorAll('.year-data').forEach(row => {
+                    row.style.display = 'none';
+                });
+                document.getElementById(item.textContent).style.display = 'table-row';
+            });
+        });
+    </script>
+</body>
+</html>
